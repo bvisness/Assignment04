@@ -35,7 +35,7 @@ void GLMiddleman::bufferObject(GLuint vao, GLuint* vbo, int numberOfVertices, Ve
     glVertexAttribPointer(vPosition, 4, GL_FLOAT, GL_FALSE, 0, 0);
     
     glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, numberOfVertices * (sizeof(GLfloat) * 4), vertexNormals, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, numberOfVertices * (sizeof(GLfloat) * 3), vertexNormals, GL_STATIC_DRAW);
     vPosition = glGetAttribLocation(program, "vNormal");
     glEnableVertexAttribArray(vPosition);
     glVertexAttribPointer(vNormal, 3, GL_FLOAT, GL_FALSE, 0, 0);

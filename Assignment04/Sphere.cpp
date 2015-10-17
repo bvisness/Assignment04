@@ -14,11 +14,13 @@ void Sphere::initSphere(float radius, int subdiv) {
     sphereVerts = new Vector4[numVertsSphere];
     sphereColors = new Vector4[numVertsSphere];
     
+    // TODO: Fix this so we don't have to worry about freaking rounding errors!
+    // (We should not be adding a float every step of the way)
     float step = (360.0 / subdiv)*(M_PI / 180.0);
     
     int k = 0;
     for (float i = -M_PI / 2; i <= M_PI / 2; i += step){
-        for (float j = -M_PI; j <= M_PI; j += step){
+        for (float j = -M_PI; j <= M_PI && k + 5 < numVertsSphere; j += step){
             //triangle 1
             sphereVerts[k] = vec4(radius*sin(j)*cos(i), radius*cos(j)*cos(i), radius*sin(i), 1.0);
             k++;
