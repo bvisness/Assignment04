@@ -15,6 +15,7 @@ class Empty: public GameObject {
 protected:
     int getNumberOfVertices();
     Vector4* getVertices();
+    Vector3* getVertexNormals();
     Vector4* getVertexColors();
 };
 

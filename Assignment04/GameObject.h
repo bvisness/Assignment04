@@ -34,6 +34,7 @@ protected:
     
     virtual int getNumberOfVertices() = 0;
     virtual Vector4* getVertices() = 0;
+    virtual Vector3* getVertexNormals() = 0;
     virtual Vector4* getVertexColors() = 0;
 public:
     void setScene(Scene* newScene);

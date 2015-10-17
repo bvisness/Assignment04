@@ -22,6 +22,7 @@ private:
 protected:
     int getNumberOfVertices();
     Vector4* getVertices();
+    Vector3* getVertexNormals();
     Vector4* getVertexColors();
 public:
     Cylinder(float radius, float depth, int verts, Vector4 color) : GameObject() {

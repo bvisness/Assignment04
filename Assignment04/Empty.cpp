@@ -16,6 +16,10 @@ Vector4* Empty::getVertices() {
     return nullptr;
 }
 
+Vector3* Empty::getVertexNormals() {
+    return nullptr;
+}
+
 Vector4* Empty::getVertexColors() {
     return nullptr;
 }

@@ -87,6 +87,10 @@ Vector4* Cylinder::getVertices() {
     return cylinderVerts;
 }
 
+Vector3* Cylinder::getVertexNormals() {
+    return nullptr;
+}
+
 Vector4* Cylinder::getVertexColors() {
     return cylinderColors;
 }

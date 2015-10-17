@@ -35,6 +35,10 @@ Vector4* Water::getVertices() {
     return waterVerts;
 }
 
+Vector3* Water::getVertexNormals() {
+    return nullptr;
+}
+
 Vector4* Water::getVertexColors() {
     initWater();
     return waterColors;

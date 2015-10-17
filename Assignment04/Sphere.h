@@ -22,6 +22,7 @@ private:
 protected:
     int getNumberOfVertices();
     Vector4* getVertices();
+    Vector3* getVertexNormals();
     Vector4* getVertexColors();
 public:
     Sphere(float radius, int subdiv, Vector4 color) : GameObject() {

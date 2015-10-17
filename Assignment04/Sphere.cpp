@@ -54,6 +54,10 @@ Vector4* Sphere::getVertices() {
     return sphereVerts;
 }
 
+Vector3* Sphere::getVertexNormals() {
+    return nullptr;
+}
+
 Vector4* Sphere::getVertexColors() {
     return sphereColors;
 }
