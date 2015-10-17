@@ -28,7 +28,7 @@ protected:
     void initGameObject();
     
     GLuint vao;
-    GLuint vbo[2];
+    GLuint vbo[3];
     GameObject* parent = nullptr;
     std::vector<GameObject*> children = std::vector<GameObject*>();
     

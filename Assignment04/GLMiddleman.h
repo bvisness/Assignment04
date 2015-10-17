@@ -23,16 +23,27 @@ public:
     GLuint model_view;
     GLuint projection;
     GLuint vPosition;
+    GLuint vNormal;
     GLuint vColor;
     
     void updateProjectionMatrix(mat4 newMatrix);
     void updateModelViewMatrix(mat4 newMatrix);
     
+    /**
+     * Buffer an object over to the graphics card.
+     *
+     * @param vao The id of the vao for this object.
+     * @param vbo An array of vbo ids for this object.
+     * @param numberOfVertices The number of vertices in this object.
+     * @param vertices The vertices of this object.
+     * @param vertexNormals The vertex normal vectors for this object.
+     * @param vertexColors The vertex colors for this object.
+     */
     void bufferObject(GLuint vao,
                       GLuint* vbo,
                       int numberOfVertices,
                       Vector4* vertices,
-                      int numberOfColors,
+                      Vector3* vertexNormals,
                       Vector4* vertexColors);
 };
 
