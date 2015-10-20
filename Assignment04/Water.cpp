@@ -11,11 +11,13 @@
 const int numVertsWater = 6;
 
 Vector4 waterVerts[numVertsWater];
+Vector3 waterNormals[numVertsWater];
 Vector4 waterColors[numVertsWater];
 
 void initWater() {
     for(int i=0; i<6; i++){
         waterColors[i] = Vector4(0.4, 0.4, 1.0, 1.0); //bottom
+        waterNormals[i] = Vector3(0, 1, 0);
     }
     
     waterVerts[0] = Vector4(-1, 0, 1, 1.0);
@@ -36,7 +38,8 @@ Vector4* Water::getVertices() {
 }
 
 Vector3* Water::getVertexNormals() {
-    return nullptr;
+    initWater();
+    return waterNormals;
 }
 
 Vector4* Water::getVertexColors() {

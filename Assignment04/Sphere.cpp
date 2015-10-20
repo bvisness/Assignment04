@@ -12,6 +12,7 @@ void Sphere::initSphere(float radius, int subdiv) {
     numVertsSphere = ceil(subdiv / 2.0) * subdiv * 6;
     
     sphereVerts = new Vector4[numVertsSphere];
+    sphereNormals = new Vector3[numVertsSphere];
     sphereColors = new Vector4[numVertsSphere];
     
     // TODO: Fix this so we don't have to worry about freaking rounding errors!
@@ -23,22 +24,28 @@ void Sphere::initSphere(float radius, int subdiv) {
         for (float j = -M_PI; j <= M_PI && k + 5 < numVertsSphere; j += step){
             //triangle 1
             sphereVerts[k] = vec4(radius*sin(j)*cos(i), radius*cos(j)*cos(i), radius*sin(i), 1.0);
+            sphereNormals[k] = vec3(sin(j)*cos(i), cos(j)*cos(i), sin(i));
             k++;
             
             sphereVerts[k] = vec4(radius*sin(j)*cos(i + step), radius*cos(j)*cos(i + step), radius*sin(i + step), 1.0);
+            sphereNormals[k] = vec3(sin(j)*cos(i), cos(j)*cos(i), sin(i));
             k++;
             
             sphereVerts[k] = vec4(radius*sin((j + step))*cos((i + step)), radius*cos(j + step)*cos(i + step), radius*sin(i + step), 1.0);
+            sphereNormals[k] = vec3(sin(j)*cos(i), cos(j)*cos(i), sin(i));
             k++;
             
             //triangle 2
             sphereVerts[k] = vec4(radius*sin((j + step))*cos((i + step)), radius*cos(j + step)*cos(i + step), radius*sin(i + step), 1.0);
+            sphereNormals[k] = vec3(sin(j)*cos(i), cos(j)*cos(i), sin(i));
             k++;
             
             sphereVerts[k] = vec4(radius*sin(j + step)*cos(i), radius*cos(j + step)*cos(i), radius*sin(i), 1.0);
+            sphereNormals[k] = vec3(sin(j)*cos(i), cos(j)*cos(i), sin(i));
             k++;
             
             sphereVerts[k] = vec4(radius*sin(j)*cos(i), radius*cos(j)*cos(i), radius*sin(i), 1.0);
+            sphereNormals[k] = vec3(sin(j)*cos(i), cos(j)*cos(i), sin(i));
             k++;
         }
     }
@@ -57,7 +64,7 @@ Vector4* Sphere::getVertices() {
 }
 
 Vector3* Sphere::getVertexNormals() {
-    return nullptr;
+    return sphereNormals;
 }
 
 Vector4* Sphere::getVertexColors() {

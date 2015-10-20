@@ -18,6 +18,7 @@ private:
     Vector4 sphereColor;
     int numVertsSphere;
     Vector4* sphereVerts = nullptr;
+    Vector3* sphereNormals = nullptr;
     Vector4* sphereColors = nullptr;
 protected:
     int getNumberOfVertices();
