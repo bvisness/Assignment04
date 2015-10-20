@@ -83,6 +83,8 @@
 		796E0E191BD1D8990032D7A8 /* Water.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Water.h; sourceTree = "<group>"; };
 		796E0E271BD1D9300032D7A8 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		796E0E291BD1D9330032D7A8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		796E0E5A1BD1F0CD0032D7A8 /* fshader-phongshading.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = "fshader-phongshading.glsl"; sourceTree = "<group>"; };
+		796E0E5B1BD1F0CD0032D7A8 /* vshader-phongshading.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = "vshader-phongshading.glsl"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,8 @@
 			children = (
 				796E0DFD1BD1D8990032D7A8 /* fshader.glsl */,
 				796E0E171BD1D8990032D7A8 /* vshader.glsl */,
+				796E0E5A1BD1F0CD0032D7A8 /* fshader-phongshading.glsl */,
+				796E0E5B1BD1F0CD0032D7A8 /* vshader-phongshading.glsl */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";

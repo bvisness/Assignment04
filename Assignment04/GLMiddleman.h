@@ -24,7 +24,10 @@ public:
     GLuint projection;
     GLuint vPosition;
     GLuint vNormal;
-    GLuint vColor;
+    GLuint vAmbientDiffuseColor;
+    GLuint uAmbientLight;
+    GLuint uLightColor;
+    GLuint uLightPosition;
     
     void updateProjectionMatrix(mat4 newMatrix);
     void updateModelViewMatrix(mat4 newMatrix);
