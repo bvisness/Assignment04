@@ -101,11 +101,15 @@ int PLYGameObject::loadPLY(const char* filename) {
         // Check for normals to be completely present
         if (nxIndex != -1 && nyIndex != -1 && nzIndex != -1) {
             hasNormals = true;
+        } else {
+            warnWithMessage(std::string(filename) + " has no normals");
         }
         
         // Check for colors to be completely present
         if (redIndex != -1 && greenIndex != -1 && blueIndex != -1) {
             hasColors = true;
+        } else {
+            warnWithMessage(std::string(filename) + " has no vertex colors");
         }
         
         // Read all the vertices into a vector
