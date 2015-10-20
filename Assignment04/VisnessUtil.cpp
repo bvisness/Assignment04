@@ -31,9 +31,17 @@ void warnWithMessage(const char* msg) {
     printf("WARNING: %s\n", msg);
 }
 
+void warnWithMessage(std::string msg) {
+    warnWithMessage(msg.c_str());
+}
+
 void abortWithMessage(const char* msg) {
     printf("ERROR: %s\n", msg);
     abort();
+}
+
+void abortWithMessage(std::string msg) {
+    abortWithMessage(msg.c_str());
 }
 
 bool operator==(const Vector2& lhs, const Vector2& rhs) {

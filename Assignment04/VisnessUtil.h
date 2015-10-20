@@ -48,7 +48,9 @@ GLfloat randRange(GLfloat min, GLfloat max);
 GLfloat clamp(GLfloat n, GLfloat min, GLfloat max);
 
 void warnWithMessage(const char* msg);
+void warnWithMessage(std::string msg);
 void abortWithMessage(const char* msg);
+void abortWithMessage(std::string msg);
 
 std::vector<std::string> split(const std::string &s, char delim);
 
