@@ -15,6 +15,10 @@
 #include "VisnessGL.h"
 #include "GLMiddleman.h"
 
+#ifndef VBO_COUNT
+#define VBO_COUNT 3 // position, normal vector, ambient and diffuse colors
+#endif
+
 class Scene;
 
 /**
@@ -28,7 +32,7 @@ protected:
     void initGameObject();
     
     GLuint vao;
-    GLuint vbo[3];
+    GLuint vbo[VBO_COUNT];
     GameObject* parent = nullptr;
     std::vector<GameObject*> children = std::vector<GameObject*>();
     

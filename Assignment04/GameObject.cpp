@@ -33,7 +33,7 @@ void GameObject::initGameObject() {
     }
     
     glGenVertexArrays(1, &vao);
-    glGenBuffers(3, vbo);
+    glGenBuffers(VBO_COUNT, vbo);
     
     scene->middleman->bufferObject(vao, vbo, getNumberOfVertices(), getVertices(), getVertexNormals(), getVertexColors());
     
