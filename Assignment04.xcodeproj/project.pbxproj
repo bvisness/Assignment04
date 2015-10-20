@@ -37,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		790C66071BD6CCAF00E30E04 /* Material.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
 		796E0DE21BD1D81B0032D7A8 /* Assignment04 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Assignment04; sourceTree = BUILT_PRODUCTS_DIR; };
 		796E0DE51BD1D81B0032D7A8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		796E0DED1BD1D8990032D7A8 /* Angel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Angel.h; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 				796E0DF81BD1D8990032D7A8 /* Empty.h */,
 				796E0DFE1BD1D8990032D7A8 /* GameObject.cpp */,
 				796E0DFF1BD1D8990032D7A8 /* GameObject.h */,
+				790C66071BD6CCAF00E30E04 /* Material.h */,
 				796E0E041BD1D8990032D7A8 /* PLYGameObject.cpp */,
 				796E0E051BD1D8990032D7A8 /* PLYGameObject.h */,
 				796E0E111BD1D8990032D7A8 /* STLGameObject.cpp */,
@@ -411,6 +413,7 @@
 				796E0DEB1BD1D81B0032D7A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

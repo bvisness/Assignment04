@@ -18,6 +18,11 @@ protected:
     Vector4* getVertices();
     Vector3* getVertexNormals();
     Vector4* getVertexColors();
+public:
+    Water() : GameObject() {
+        material.specularAmount = 0.8;
+        material.specularExponent = 1000;
+    }
 };
 
 #endif /* defined(__Assignment02__Water__) */

@@ -3,12 +3,16 @@
 in vec4 vPosition;
 in vec4 vAmbientDiffuseColor;
 in vec3 vNormal;
-// in float vSpecularExponent;
+in float vDiffuseAmount;
+in float vSpecularAmount;
+in float vSpecularExponent;
 
 vec4 vSpecularColor = vec4(1, 1, 1, 1);
 
 out vec4 ambientDiffuseColor;
 out vec4 specularColor;
+out float diffuseAmount;
+out float specularAmount;
 out float specularExponent;
 out vec3 N;
 out vec3 V;
@@ -33,7 +37,9 @@ void main()
 
 	ambientDiffuseColor = vAmbientDiffuseColor;
 	specularColor = vSpecularColor;
-    specularExponent = 30; // vSpecularExponent
+    diffuseAmount = vDiffuseAmount;
+    specularAmount = vSpecularAmount;
+    specularExponent = vSpecularExponent;
 
 	gl_Position = uProjection * vPosEye;
 }

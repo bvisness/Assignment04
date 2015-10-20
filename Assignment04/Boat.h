@@ -13,7 +13,10 @@
 
 class Boat: public PLYGameObject {
 public:
-    Boat() : PLYGameObject("Boat.ply") {}
+    Boat() : PLYGameObject("Boat.ply") {
+        material.specularAmount = 0.2;
+        material.specularExponent = 10;
+    }
 };
 
 #endif /* defined(__Assignment02__Boat__) */

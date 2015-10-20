@@ -14,9 +14,10 @@
 #include "VisnessUtil.h"
 #include "VisnessGL.h"
 #include "GLMiddleman.h"
+#include "Material.h"
 
 #ifndef VBO_COUNT
-#define VBO_COUNT 3 // position, normal vector, ambient and diffuse colors
+#define VBO_COUNT 6 // position, normal vector, ambient and diffuse colors, diffuse amount, specular amount, specular exponent
 #endif
 
 class Scene;
@@ -48,6 +49,8 @@ public:
     Vector3 position = Vector3();
     Vector3 rotation = Vector3();
     GLfloat scale = 1;
+    
+    Material material;
     
     GameObject* getParent();
     std::vector<GameObject*> getChildren();

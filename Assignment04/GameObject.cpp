@@ -35,7 +35,7 @@ void GameObject::initGameObject() {
     glGenVertexArrays(1, &vao);
     glGenBuffers(VBO_COUNT, vbo);
     
-    scene->middleman->bufferObject(vao, vbo, getNumberOfVertices(), getVertices(), getVertexNormals(), getVertexColors());
+    scene->middleman->bufferObject(vao, vbo, getNumberOfVertices(), getVertices(), getVertexNormals(), getVertexColors(), material);
     
     std::vector<GameObject*>::iterator it = children.begin();
     while (it != children.end()) {

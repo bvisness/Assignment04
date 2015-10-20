@@ -11,6 +11,7 @@
 
 #include "VisnessGL.h"
 #include "VisnessUtil.h"
+#include "Material.h"
 
 /**
  * A class that handles shipping data over to
@@ -25,6 +26,9 @@ public:
     GLuint vPosition;
     GLuint vNormal;
     GLuint vAmbientDiffuseColor;
+    GLfloat vDiffuseAmount;
+    GLfloat vSpecularAmount;
+    GLfloat vSpecularExponent;
     GLuint uAmbientLight;
     GLuint uLightColor;
     GLuint uLightPosition;
@@ -41,13 +45,15 @@ public:
      * @param vertices The vertices of this object.
      * @param vertexNormals The vertex normal vectors for this object.
      * @param vertexColors The vertex colors for this object.
+     * @param material The material for this object.
      */
     void bufferObject(GLuint vao,
                       GLuint* vbo,
                       int numberOfVertices,
                       Vector4* vertices,
                       Vector3* vertexNormals,
-                      Vector4* vertexColors);
+                      Vector4* vertexColors,
+                      Material material);
 };
 
 #endif /* defined(__Assignment02__GLMiddleman__) */

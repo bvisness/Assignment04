@@ -225,6 +225,7 @@ void createObjects() {
             for (int k = 0; k < 10; k++) {
                 Sphere* pillarSphere = new Sphere(0.25, 36, Vector4(i % 2, j % 2, 1, 1));
                 pillarSphere->position = Vector3(pillarX, k * 0.5, pillarZ);
+                pillarSphere->material.specularAmount = 1;
                 scene->addGameObject(pillarSphere);
             }
         }
