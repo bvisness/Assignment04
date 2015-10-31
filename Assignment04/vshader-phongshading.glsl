@@ -1,5 +1,7 @@
 #version 150
 
+#define MAX_LIGHTS 6
+
 in vec4 vPosition;
 in vec4 vAmbientDiffuseColor;
 in vec3 vNormal;
@@ -14,26 +16,34 @@ out vec4 specularColor;
 out float diffuseAmount;
 out float specularAmount;
 out float specularExponent;
-out vec3 N;
-out vec3 V;
-out vec3 L;
-out vec3 H; 
+out vec3 N[MAX_LIGHTS];
+out vec3 L[MAX_LIGHTS];
+out vec3 H[MAX_LIGHTS];
 
 uniform mat4 uModelView;
 uniform mat4 uProjection;
-uniform vec4 uLightPosition;
-uniform vec4 uLightColor;
+
+uniform int uLightType[MAX_LIGHTS];
+uniform vec4 uLightPosition[MAX_LIGHTS];
+uniform vec4 uLightDirection[MAX_LIGHTS];
 uniform vec4 uAmbientLight;
 
 void main()
 {
 	vec4 normal = uModelView * vec4(vNormal, 0);
-	N = normalize(normal.xyz);
-
 	vec4 vPosEye = uModelView * vPosition;
-	V = normalize(-vPosEye.xyz);
-	L = normalize(uLightPosition.xyz - vPosEye.xyz);
-	H = normalize(L + V); // This is doing an average, cleverly enough
+    
+    for (int i = 0; i < MAX_LIGHTS; i++) {
+        if (uLightType[i] == 0) {
+            continue;
+        }
+        
+        vec3 V = normalize(-vPosEye.xyz);
+        
+        N[i] = normalize(normal.xyz);
+        L[i] = normalize(uLightPosition[i].xyz - vPosEye.xyz);
+        H[i] = normalize(L[i] + V);
+    }
 
 	ambientDiffuseColor = vAmbientDiffuseColor;
 	specularColor = vSpecularColor;

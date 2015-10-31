@@ -23,9 +23,11 @@ GLMiddleman::GLMiddleman() {
     //grab pointers for our uniforms
     model_view = glGetUniformLocation(program, "uModelView");
     projection = glGetUniformLocation(program, "uProjection");
-    uLightPosition = glGetUniformLocation(program, "uLightPosition");
-    uLightColor = glGetUniformLocation(program, "uLightColor");
     uAmbientLight = glGetUniformLocation(program, "uAmbientLight");
+    uLightType = glGetUniformLocation(program, "uLightType");
+    uLightColor = glGetUniformLocation(program, "uLightColor");
+    uLightPosition = glGetUniformLocation(program, "uLightPosition");
+    uLightDirection = glGetUniformLocation(program, "uLightDirection");
 }
 
 void GLMiddleman::updateProjectionMatrix(mat4 newMatrix) {

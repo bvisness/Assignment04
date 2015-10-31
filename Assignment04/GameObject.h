@@ -87,6 +87,10 @@ public:
      * Draw the GameObject and all its children onscreen.
      */
     void draw();
+    
+    virtual bool isLight();
+    virtual int getLightType();
+    virtual Vector4 getLightColor();
 };
 
 #endif

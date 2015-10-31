@@ -36,8 +36,29 @@ void Scene::init() {
 }
 
 void Scene::draw() {
-    glUniform4fv(middleman->uLightPosition, 1, activeCamera->getModelViewMatrix() * vec4(0, 5, 0, 1));
-    glUniform4fv(middleman->uLightColor, 1, vec4(1, 1, 1, 1));
+    vec4 lightPositions[6] = {
+        activeCamera->getModelViewMatrix() * vec4(-15, 5, 0, 1),
+        activeCamera->getModelViewMatrix() * vec4(-10, 5, 0, 1),
+        activeCamera->getModelViewMatrix() * vec4(-5, 5, 0, 1),
+        activeCamera->getModelViewMatrix() * vec4(0, 5, 0, 1),
+        activeCamera->getModelViewMatrix() * vec4(5, 5, 0, 1),
+        activeCamera->getModelViewMatrix() * vec4(10, 5, 0, 1)
+    };
+    glUniform4fv(middleman->uLightPosition, MAX_LIGHTS, (const GLfloat*)lightPositions);
+    
+    vec4 lightColors[6] = {
+        vec4(1, 0, 0, 1),
+        vec4(0, 1, 0, 1),
+        vec4(0, 0, 1, 1),
+        vec4(1, 1, 0, 1),
+        vec4(0, 1, 1, 1),
+        vec4(1, 0, 1, 1)
+    };
+    glUniform4fv(middleman->uLightColor, MAX_LIGHTS, (const GLfloat*)lightColors);
+    
+    int lightTypes[MAX_LIGHTS] = {0, 0, 0, 0, 0, 1};
+    glUniform1iv(middleman->uLightType, MAX_LIGHTS, (const GLint*)lightTypes);
+    
     glUniform4fv(middleman->uAmbientLight, 1, vec4(0.2, 0.2, 0.2, 1));
     
     std::vector<GameObject*>::iterator it = gameObjects.begin();

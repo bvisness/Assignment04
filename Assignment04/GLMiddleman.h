@@ -30,8 +30,10 @@ public:
     GLfloat vSpecularAmount;
     GLfloat vSpecularExponent;
     GLuint uAmbientLight;
+    GLuint uLightType;
     GLuint uLightColor;
     GLuint uLightPosition;
+    GLuint uLightDirection;
     
     void updateProjectionMatrix(mat4 newMatrix);
     void updateModelViewMatrix(mat4 newMatrix);

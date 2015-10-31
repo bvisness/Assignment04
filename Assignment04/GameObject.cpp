@@ -148,3 +148,15 @@ void GameObject::draw() {
         it++;
     }
 }
+
+bool GameObject::isLight() {
+    return false;
+}
+
+int GameObject::getLightType() {
+    return 0;
+}
+
+Vector4 GameObject::getLightColor() {
+    return Vector4(0, 0, 0, 1);
+}

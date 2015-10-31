@@ -15,6 +15,10 @@
 #include "GLMiddleman.h"
 #include "Camera.h"
 
+#ifndef MAX_LIGHTS
+#define MAX_LIGHTS 6
+#endif
+
 /**
  * The entire scene to be displayed.
  */
