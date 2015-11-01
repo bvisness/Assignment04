@@ -10,9 +10,9 @@
 #define __Assignment03__Camera__
 
 #include "VisnessUtil.h"
-#include "Empty.h"
+#include "GameObject.h"
 
-class Camera: public Empty {
+class Camera: public GameObject {
 private:
     /**
      * If this camera is assigned to a scene, tell

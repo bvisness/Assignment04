@@ -16,7 +16,7 @@ void Camera::updateSceneProjectionMatrixIfSafe() {
 }
 
 Camera::Camera() {
-    defaultTarget = new Empty();
+    defaultTarget = new GameObject();
     defaultTarget->position = Vector3(0, 0, 1);
     addChild(defaultTarget);
 }

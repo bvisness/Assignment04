@@ -9,9 +9,9 @@
 #ifndef __Assignment03__PLYGameObject__
 #define __Assignment03__PLYGameObject__
 
-#include "GameObject.h"
+#include "RenderedGameObject.h"
 
-class PLYGameObject: public GameObject {
+class PLYGameObject: public RenderedGameObject {
 private:
     bool initialized = false;
     int numberOfVertices = 0;
@@ -25,8 +25,8 @@ protected:
     Vector4* getVertexColors();
 public:
     int loadPLY(const char* filename);
-    PLYGameObject() : GameObject() {}
-    PLYGameObject(const char* filename) : GameObject() {
+	PLYGameObject() : RenderedGameObject() {}
+	PLYGameObject(const char* filename) : RenderedGameObject() {
         printf("%d\n", loadPLY(filename));
     }
 };

@@ -32,10 +32,7 @@ void GameObject::initGameObject() {
         return;
     }
     
-    glGenVertexArrays(1, &vao);
-    glGenBuffers(VBO_COUNT, vbo);
-    
-    scene->middleman->bufferObject(vao, vbo, getNumberOfVertices(), getVertices(), getVertexNormals(), getVertexColors(), material);
+	customInitGameObject();
     
     std::vector<GameObject*>::iterator it = children.begin();
     while (it != children.end()) {
@@ -44,10 +41,6 @@ void GameObject::initGameObject() {
     }
     
     initialized = true;
-}
-
-GLuint GameObject::getVAO() {
-    return vao;
 }
 
 std::vector<GameObject*> GameObject::getChildren() {
@@ -136,11 +129,7 @@ void GameObject::draw() {
         abortWithMessage("In GameObject::draw(): Scene for GameObject was never set");
     }
     
-    mat4 mv = getModelViewMatrix();
-    
-    scene->middleman->updateModelViewMatrix(mv);
-    glBindVertexArray(vao);
-    glDrawArrays(GL_TRIANGLES, 0, getNumberOfVertices());
+	drawGameObject();
     
     std::vector<GameObject*>::iterator it = children.begin();
     while (it != children.end()) {
@@ -149,14 +138,6 @@ void GameObject::draw() {
     }
 }
 
-bool GameObject::isLight() {
-    return false;
-}
+void GameObject::drawGameObject() { }
 
-int GameObject::getLightType() {
-    return 0;
-}
-
-Vector4 GameObject::getLightColor() {
-    return Vector4(0, 0, 0, 1);
-}
+void GameObject::customInitGameObject() { }

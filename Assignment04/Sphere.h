@@ -9,10 +9,10 @@
 #ifndef __Assignment03__Sphere__
 #define __Assignment03__Sphere__
 
-#include "GameObject.h"
+#include "RenderedGameObject.h"
 #include "GLMiddleman.h"
 
-class Sphere: public GameObject {
+class Sphere: public RenderedGameObject {
 private:
     void initSphere(float radius, int subdiv);
     Vector4 sphereColor;
@@ -26,7 +26,7 @@ protected:
     Vector3* getVertexNormals();
     Vector4* getVertexColors();
 public:
-    Sphere(float radius, int subdiv, Vector4 color) : GameObject() {
+	Sphere(float radius, int subdiv, Vector4 color) : RenderedGameObject() {
         sphereColor = color;
         initSphere(radius, subdiv);
     }

@@ -48,6 +48,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <DisableSpecificWarnings>4244;4305</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -73,12 +74,12 @@
   <ItemGroup>
     <ClCompile Include="assignment04\Camera.cpp" />
     <ClCompile Include="assignment04\Cylinder.cpp" />
-    <ClCompile Include="assignment04\Empty.cpp" />
     <ClCompile Include="assignment04\GameObject.cpp" />
     <ClCompile Include="assignment04\GLMiddleman.cpp" />
     <ClCompile Include="assignment04\InitShader.cpp" />
     <ClCompile Include="assignment04\main.cpp" />
     <ClCompile Include="assignment04\PLYGameObject.cpp" />
+    <ClCompile Include="Assignment04\RenderedGameObject.cpp" />
     <ClCompile Include="assignment04\Scene.cpp" />
     <ClCompile Include="assignment04\Sphere.cpp" />
     <ClCompile Include="assignment04\STLGameObject.cpp" />
@@ -91,13 +92,13 @@
     <ClInclude Include="assignment04\Camera.h" />
     <ClInclude Include="assignment04\CheckError.h" />
     <ClInclude Include="assignment04\Cylinder.h" />
-    <ClInclude Include="assignment04\Empty.h" />
     <ClInclude Include="assignment04\Fan.h" />
     <ClInclude Include="assignment04\GameObject.h" />
     <ClInclude Include="assignment04\GLMiddleman.h" />
     <ClInclude Include="assignment04\mat.h" />
     <ClInclude Include="assignment04\Material.h" />
     <ClInclude Include="assignment04\PLYGameObject.h" />
+    <ClInclude Include="Assignment04\RenderedGameObject.h" />
     <ClInclude Include="assignment04\Rudder.h" />
     <ClInclude Include="assignment04\Scene.h" />
     <ClInclude Include="assignment04\Searchlight.h" />

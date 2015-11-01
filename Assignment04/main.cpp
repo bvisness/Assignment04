@@ -13,7 +13,6 @@
 #include "Rudder.h"
 #include "Searchlight.h"
 #include "Water.h"
-#include "Empty.h"
 #include "Scene.h"
 #include "Camera.h"
 #include "Sphere.h"

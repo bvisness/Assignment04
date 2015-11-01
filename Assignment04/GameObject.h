@@ -16,10 +16,6 @@
 #include "GLMiddleman.h"
 #include "Material.h"
 
-#ifndef VBO_COUNT
-#define VBO_COUNT 6 // position, normal vector, ambient and diffuse colors, diffuse amount, specular amount, specular exponent
-#endif
-
 class Scene;
 
 /**
@@ -32,25 +28,17 @@ protected:
     Scene* scene = nullptr;
     void initGameObject();
     
-    GLuint vao;
-    GLuint vbo[VBO_COUNT];
     GameObject* parent = nullptr;
     std::vector<GameObject*> children = std::vector<GameObject*>();
-    
-    virtual int getNumberOfVertices() = 0;
-    virtual Vector4* getVertices() = 0;
-    virtual Vector3* getVertexNormals() = 0;
-    virtual Vector4* getVertexColors() = 0;
+
+	virtual void drawGameObject();
+	virtual void customInitGameObject();
 public:
     void setScene(Scene* newScene);
-    
-    GLuint getVAO();
     
     Vector3 position = Vector3();
     Vector3 rotation = Vector3();
     GLfloat scale = 1;
-    
-    Material material;
     
     GameObject* getParent();
     std::vector<GameObject*> getChildren();
@@ -87,10 +75,6 @@ public:
      * Draw the GameObject and all its children onscreen.
      */
     void draw();
-    
-    virtual bool isLight();
-    virtual int getLightType();
-    virtual Vector4 getLightColor();
 };
 
 #endif

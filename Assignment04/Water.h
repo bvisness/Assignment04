@@ -9,17 +9,16 @@
 #ifndef __Assignment02__Water__
 #define __Assignment02__Water__
 
-#include "GameObject.h"
-#include "GLMiddleman.h"
+#include "RenderedGameObject.h"
 
-class Water: public GameObject {
+class Water: public RenderedGameObject {
 protected:
     int getNumberOfVertices();
     Vector4* getVertices();
     Vector3* getVertexNormals();
     Vector4* getVertexColors();
 public:
-    Water() : GameObject() {
+	Water() : RenderedGameObject() {
         material.specularAmount = 0.8;
         material.specularExponent = 1000;
     }
