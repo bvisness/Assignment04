@@ -20,7 +20,7 @@ out vec4 fColor;
 
 void main()
 {
-    vec4 amb = vec4(0, 0, 0, 0);
+    vec4 amb = ambientDiffuseColor * uAmbientLight;
     vec4 diff = vec4(0, 0, 0, 0);
     vec4 spec = vec4(0, 0, 0, 0);
     
@@ -33,17 +33,16 @@ void main()
         vec3 fL = L[i];
         vec3 fH = H[i];
 
-        amb += ambientDiffuseColor * uAmbientLight;
         diff += max(0, dot(fN, fL)) * diffuseAmount * ambientDiffuseColor * uLightColor[i];
         spec += pow(max(0, dot(fN, fH)), specularExponent) * specularAmount * specularColor * uLightColor[i];
     }
     
     fColor = amb + diff + spec;
-//    fColor = amb;
-//    fColor = diff;
-//    fColor = spec;
-//    fColor = vec4(fN, 1);
-//    fColor = vec4(diffuseAmount, diffuseAmount, diffuseAmount, 1);
-//    fColor = vec4(specularAmount, specularAmount, specularAmount, 1);
-//    fColor = vec4(specularExponent, specularExponent, specularExponent, 1);
+    //fColor = amb;
+    //fColor = diff;
+    //fColor = spec;
+    //fColor = vec4(fN, 1);
+    //fColor = vec4(diffuseAmount, diffuseAmount, diffuseAmount, 1);
+    //fColor = vec4(specularAmount, specularAmount, specularAmount, 1);
+    //fColor = vec4(specularExponent, specularExponent, specularExponent, 1);
 }

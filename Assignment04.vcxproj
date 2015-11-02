@@ -77,6 +77,7 @@
     <ClCompile Include="assignment04\GameObject.cpp" />
     <ClCompile Include="assignment04\GLMiddleman.cpp" />
     <ClCompile Include="assignment04\InitShader.cpp" />
+    <ClCompile Include="Assignment04\Light.cpp" />
     <ClCompile Include="assignment04\main.cpp" />
     <ClCompile Include="assignment04\PLYGameObject.cpp" />
     <ClCompile Include="Assignment04\RenderedGameObject.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="assignment04\Fan.h" />
     <ClInclude Include="assignment04\GameObject.h" />
     <ClInclude Include="assignment04\GLMiddleman.h" />
+    <ClInclude Include="Assignment04\Light.h" />
     <ClInclude Include="assignment04\mat.h" />
     <ClInclude Include="assignment04\Material.h" />
     <ClInclude Include="assignment04\PLYGameObject.h" />

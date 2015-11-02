@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Benjamin Visness. All rights reserved.
 //
 
+#include <string>
+
 #include "GLMiddleman.h"
 
 GLfloat* floatArrayWithValue(int size, GLfloat value) {
@@ -82,4 +84,22 @@ void GLMiddleman::bufferObject(GLuint vao, GLuint* vbo, int numberOfVertices, Ve
     vSpecularExponent = glGetAttribLocation(program, "vSpecularExponent");
     glEnableVertexAttribArray(vSpecularExponent);
     glVertexAttribPointer(vSpecularExponent, 1, GL_FLOAT, GL_FALSE, 0, 0);
+}
+
+int GLMiddleman::getLightId() {
+	if (numRegisteredLights >= MAX_LIGHTS) {
+		warnWithMessage("Maximum of " + std::to_string(MAX_LIGHTS) + " lights reached. Results may be unexpected.");
+		return 0;
+	}
+
+	int id = numRegisteredLights;
+	numRegisteredLights++;
+	return id;
+}
+
+void GLMiddleman::bufferLights() {
+	glUniform4fv(uLightPosition, MAX_LIGHTS, (const GLfloat*)lightPositions);
+	glUniform4fv(uLightDirection, MAX_LIGHTS, (const GLfloat*)lightDirections);
+	glUniform4fv(uLightColor, MAX_LIGHTS, (const GLfloat*)lightColors);
+	glUniform1iv(uLightType, MAX_LIGHTS, (const GLint*)lightTypes);
 }

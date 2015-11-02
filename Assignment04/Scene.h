@@ -14,10 +14,7 @@
 #include "GameObject.h"
 #include "GLMiddleman.h"
 #include "Camera.h"
-
-#ifndef MAX_LIGHTS
-#define MAX_LIGHTS 6
-#endif
+#include "Light.h"
 
 /**
  * The entire scene to be displayed.
@@ -25,14 +22,17 @@
 class Scene {
 protected:
     std::vector<GameObject*> gameObjects = std::vector<GameObject*>();
+	std::vector<Light*> lights = std::vector<Light*>();
     Camera* activeCamera = nullptr;
     bool initialized = false;
 public:
     GLMiddleman* middleman = nullptr;
+
     Scene();
     Scene(GLMiddleman* newMiddleman);
     
     void addGameObject(GameObject* obj);
+	void addLight(Light* light);
     void init();
     void draw();
     

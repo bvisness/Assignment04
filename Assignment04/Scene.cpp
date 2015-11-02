@@ -21,6 +21,11 @@ void Scene::addGameObject(GameObject* obj) {
     gameObjects.push_back(obj);
 }
 
+void Scene::addLight(Light* light) {
+	lights.push_back(light);
+	addGameObject(light);
+}
+
 void Scene::init() {
     if (initialized) {
         return;
@@ -36,35 +41,20 @@ void Scene::init() {
 }
 
 void Scene::draw() {
-    vec4 lightPositions[6] = {
-        activeCamera->getModelViewMatrix() * vec4(-15, 5, 0, 1),
-        activeCamera->getModelViewMatrix() * vec4(-10, 5, 0, 1),
-        activeCamera->getModelViewMatrix() * vec4(-5, 5, 0, 1),
-        activeCamera->getModelViewMatrix() * vec4(0, 5, 0, 1),
-        activeCamera->getModelViewMatrix() * vec4(5, 5, 0, 1),
-        activeCamera->getModelViewMatrix() * vec4(10, 5, 0, 1)
-    };
-    glUniform4fv(middleman->uLightPosition, MAX_LIGHTS, (const GLfloat*)lightPositions);
-    
-    vec4 lightColors[6] = {
-        vec4(1, 0, 0, 1),
-        vec4(0, 1, 0, 1),
-        vec4(0, 0, 1, 1),
-        vec4(1, 1, 0, 1),
-        vec4(0, 1, 1, 1),
-        vec4(1, 0, 1, 1)
-    };
-    glUniform4fv(middleman->uLightColor, MAX_LIGHTS, (const GLfloat*)lightColors);
-    
-    int lightTypes[MAX_LIGHTS] = {0, 0, 0, 0, 0, 1};
-    glUniform1iv(middleman->uLightType, MAX_LIGHTS, (const GLint*)lightTypes);
+	std::vector<Light*>::iterator lightsIt = lights.begin();
+	while (lightsIt != lights.end()) {
+		(*lightsIt)->updateInMiddleman();
+		lightsIt++;
+	}
+
+	middleman->bufferLights();
     
     glUniform4fv(middleman->uAmbientLight, 1, vec4(0.2, 0.2, 0.2, 1));
     
-    std::vector<GameObject*>::iterator it = gameObjects.begin();
-    while (it != gameObjects.end()) {
-        (*it)->draw();
-        it++;
+    std::vector<GameObject*>::iterator objsIt = gameObjects.begin();
+	while (objsIt != gameObjects.end()) {
+		(*objsIt)->draw();
+		objsIt++;
     }
 }
 

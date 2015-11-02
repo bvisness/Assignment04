@@ -13,11 +13,17 @@
 #include "VisnessUtil.h"
 #include "Material.h"
 
+#ifndef MAX_LIGHTS
+#define MAX_LIGHTS 6
+#endif
+
 /**
  * A class that handles shipping data over to
  * the graphics card using OpenGL methods.
  */
 class GLMiddleman {
+private:
+	int numRegisteredLights = 0;
 public:
     GLMiddleman();
     GLuint program;
@@ -34,6 +40,11 @@ public:
     GLuint uLightColor;
     GLuint uLightPosition;
     GLuint uLightDirection;
+
+	Vector4 lightPositions[MAX_LIGHTS];
+	Vector4 lightDirections[MAX_LIGHTS];
+	Vector4 lightColors[MAX_LIGHTS];
+	int lightTypes[MAX_LIGHTS];
     
     void updateProjectionMatrix(mat4 newMatrix);
     void updateModelViewMatrix(mat4 newMatrix);
@@ -56,6 +67,9 @@ public:
                       Vector3* vertexNormals,
                       Vector4* vertexColors,
                       Material material);
+
+	int getLightId();
+	void bufferLights();
 };
 
 #endif /* defined(__Assignment02__GLMiddleman__) */
