@@ -44,5 +44,8 @@ void main()
     //fColor = vec4(fN, 1);
     //fColor = vec4(diffuseAmount, diffuseAmount, diffuseAmount, 1);
     //fColor = vec4(specularAmount, specularAmount, specularAmount, 1);
+	//fColor = specularColor;
+	//fColor = vec4(dot(N[0], H[0]), dot(N[0], H[0]), dot(N[0], H[0]), 1);
     //fColor = vec4(specularExponent, specularExponent, specularExponent, 1);
+	//fColor = uLightColor[0];
 }
