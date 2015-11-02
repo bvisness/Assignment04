@@ -22,8 +22,9 @@ private:
 protected:
 	void customInitGameObject();
 public:
-	Vector4 color = Vector4(0, 0, 0, 1);
+	Vector4 color = Vector4(0.5, 0.5, 0.5, 1);
 	int type = LIGHT_DISABLED;
+	int spotAngle = 35;
 
 	void updateInMiddleman();
 };

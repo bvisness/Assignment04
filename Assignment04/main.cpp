@@ -208,9 +208,23 @@ void createObjects() {
     searchlight = new Searchlight();
     searchlight->position = Vector3(0, 0.5, 1.75);
     boat->addChild(searchlight);
+
+	Light* searchlightLight = new Light();
+	searchlightLight->type = LIGHT_SPOT;
+	searchlightLight->spotAngle = 20;
+	searchlightLight->position = Vector3(0, 1, 0);
+	searchlightLight->rotation.x = 20;
+	searchlightLight->color = Vector4(1, 1, 0.4, 1);
+	scene->addLight(searchlightLight);
+	searchlight->addChild(searchlightLight);
     
     water = new Water();
     water->scale = 10;
+
+	Light* moon = new Light();
+	moon->type = LIGHT_DIRECTIONAL;
+	moon->color = Vector4(0.1, 0.1, 0.2, 1);
+	scene->addLight(moon);
     
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {

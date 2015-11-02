@@ -30,6 +30,7 @@ GLMiddleman::GLMiddleman() {
     uLightColor = glGetUniformLocation(program, "uLightColor");
     uLightPosition = glGetUniformLocation(program, "uLightPosition");
     uLightDirection = glGetUniformLocation(program, "uLightDirection");
+	uLightSpotAngleCos = glGetUniformLocation(program, "uLightSpotAngleCos");
 }
 
 void GLMiddleman::updateProjectionMatrix(mat4 newMatrix) {
@@ -100,6 +101,7 @@ int GLMiddleman::getLightId() {
 void GLMiddleman::bufferLights() {
 	glUniform4fv(uLightPosition, MAX_LIGHTS, (const GLfloat*)lightPositions);
 	glUniform4fv(uLightDirection, MAX_LIGHTS, (const GLfloat*)lightDirections);
+	glUniform1fv(uLightSpotAngleCos, MAX_LIGHTS, (const GLfloat*)lightSpotAngleCosines);
 	glUniform4fv(uLightColor, MAX_LIGHTS, (const GLfloat*)lightColors);
 	glUniform1iv(uLightType, MAX_LIGHTS, (const GLint*)lightTypes);
 }

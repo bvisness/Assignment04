@@ -40,11 +40,13 @@ public:
     GLuint uLightColor;
     GLuint uLightPosition;
     GLuint uLightDirection;
+	GLuint uLightSpotAngleCos;
 
 	Vector4 lightPositions[MAX_LIGHTS];
 	Vector4 lightDirections[MAX_LIGHTS];
 	Vector4 lightColors[MAX_LIGHTS];
-	int lightTypes[MAX_LIGHTS];
+	GLint lightTypes[MAX_LIGHTS];
+	GLfloat lightSpotAngleCosines[MAX_LIGHTS];
     
     void updateProjectionMatrix(mat4 newMatrix);
     void updateModelViewMatrix(mat4 newMatrix);
