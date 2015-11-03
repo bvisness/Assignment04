@@ -13,6 +13,9 @@
 #include "Rudder.h"
 #include "Searchlight.h"
 #include "Water.h"
+#include "Boulder.h"
+#include "LilyPads.h"
+#include "CypressTree.h"
 #include "Scene.h"
 #include "Camera.h"
 #include "Sphere.h"
@@ -285,6 +288,26 @@ void createObjects() {
 	moon->color = Vector4(0.1, 0.1, 0.2, 1);
 	scene->addLight(moon);
 	scene->addGameObject(moon);
+
+	Boulder* boulder1 = new Boulder();
+	boulder1->position = Vector3(-5.8, 0, 5.5);
+	scene->addGameObject(boulder1);
+
+	Boulder* boulder2 = new Boulder();
+	boulder2->position = Vector3(3.4, 0, -6);
+	boulder2->rotation = Vector3(0, 75, -25);
+	boulder2->scale = 1.43;
+	scene->addGameObject(boulder2);
+
+	LilyPads* lilyPads = new LilyPads();
+	lilyPads->position = Vector3(4.67, 0, 5.8);
+	lilyPads->scale = 0.7;
+	scene->addGameObject(lilyPads);
+
+	CypressTree* tree = new CypressTree();
+	tree->position = Vector3(-7.3, 0, -6.72);
+	tree->rotation = Vector3(0, 27, 0);
+	scene->addGameObject(tree);
     
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {

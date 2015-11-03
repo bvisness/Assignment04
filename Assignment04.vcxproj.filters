@@ -125,6 +125,15 @@
     <ClInclude Include="Assignment04\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Assignment04\Boulder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Assignment04\LilyPads.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Assignment04\CypressTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assignment04\vshader-phongshading.glsl">

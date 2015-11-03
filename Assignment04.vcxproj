@@ -90,13 +90,16 @@
   <ItemGroup>
     <ClInclude Include="assignment04\Angel.h" />
     <ClInclude Include="assignment04\Boat.h" />
+    <ClInclude Include="Assignment04\Boulder.h" />
     <ClInclude Include="assignment04\Camera.h" />
     <ClInclude Include="assignment04\CheckError.h" />
     <ClInclude Include="assignment04\Cylinder.h" />
+    <ClInclude Include="Assignment04\CypressTree.h" />
     <ClInclude Include="assignment04\Fan.h" />
     <ClInclude Include="assignment04\GameObject.h" />
     <ClInclude Include="assignment04\GLMiddleman.h" />
     <ClInclude Include="Assignment04\Light.h" />
+    <ClInclude Include="Assignment04\LilyPads.h" />
     <ClInclude Include="assignment04\mat.h" />
     <ClInclude Include="assignment04\Material.h" />
     <ClInclude Include="assignment04\PLYGameObject.h" />
