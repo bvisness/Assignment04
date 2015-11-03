@@ -14,7 +14,7 @@
 #include "Material.h"
 
 #ifndef MAX_LIGHTS
-#define MAX_LIGHTS 6
+#define MAX_LIGHTS 10
 #endif
 
 /**

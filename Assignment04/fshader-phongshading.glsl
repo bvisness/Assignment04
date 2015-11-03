@@ -1,6 +1,6 @@
 #version 150
 
-#define MAX_LIGHTS 6
+#define MAX_LIGHTS 10
 
 #define LIGHT_DISABLED 0
 #define LIGHT_POINT 1
