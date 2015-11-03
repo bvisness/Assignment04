@@ -44,7 +44,14 @@ Fan* fan;
 Rudder* rudders[numRudders];
 Searchlight* searchlight;
 Water* water;
+
 GameObject* hazardLights;
+Light* searchlightLight;
+Light* starboardLight;
+Light* portLight;
+Light* rearLight;
+Light* hazardLight1;
+Light* hazardLight2;
 
 Camera* freeCam;
 Camera* chaseCam;
@@ -74,6 +81,9 @@ bool keySwitchLookTarget = false;
 bool keyResetCamera = false;
 bool keySearchlightClockwise = false;
 bool keySearchlightCounterclockwise = false;
+bool searchlightOn = true;
+bool navLightsOn = true;
+bool hazardLightsOn = false;
 
 void resetFreeCamera() {
     freeCam->setFOV(45);
@@ -120,7 +130,13 @@ void keyboard(unsigned char key, int x, int y) {
         } else {
             scene->setActiveCamera(freeCam);
         }
-    }
+	} else if (key == 's') {
+		searchlightOn = !searchlightOn;
+	} else if (key == 'n') {
+		navLightsOn = !navLightsOn;
+	} else if (key == 'h') {
+		hazardLightsOn = !hazardLightsOn;
+	}
     
     if (scene->getActiveCamera() == freeCam) {
         if (key == 'x') {
@@ -211,7 +227,7 @@ void createObjects() {
     searchlight->position = Vector3(0, 0.5, 1.75);
     boat->addChild(searchlight);
 
-	Light* searchlightLight = new Light();
+	searchlightLight = new Light();
 	searchlightLight->type = LIGHT_SPOT;
 	searchlightLight->spotAngle = 20;
 	searchlightLight->position = Vector3(0, 1, 0);
@@ -220,23 +236,23 @@ void createObjects() {
 	scene->addLight(searchlightLight);
 	searchlight->addChild(searchlightLight);
 
-	Light* starboard = new Light();
-	starboard->type = LIGHT_POINT;
-	starboard->color = Vector4(0.1, 0.5, 0.1, 1);
-	starboard->position = Vector3(-1.1, 0.2, 0);
-	scene->addLight(starboard);
-	boat->addChild(starboard);
+	starboardLight = new Light();
+	starboardLight->type = LIGHT_POINT;
+	starboardLight->color = Vector4(0.1, 0.5, 0.1, 1);
+	starboardLight->position = Vector3(-1.1, 0.2, 0);
+	scene->addLight(starboardLight);
+	boat->addChild(starboardLight);
 
-	Light* port = new Light();
-	port->type = LIGHT_POINT;
-	port->color = Vector4(0.5, 0.1, 0.1, 1);
-	port->position = Vector3(1.1, 0.2, 0);
-	scene->addLight(port);
-	boat->addChild(port);
+	portLight = new Light();
+	portLight->type = LIGHT_POINT;
+	portLight->color = Vector4(0.5, 0.1, 0.1, 1);
+	portLight->position = Vector3(1.1, 0.2, 0);
+	scene->addLight(portLight);
+	boat->addChild(portLight);
 
-	Light* rearLight = new Light();
+	rearLight = new Light();
 	rearLight->type = LIGHT_POINT;
-	rearLight->color = Vector4(1, 1, 1, 1);
+	rearLight->color = Vector4(0.6, 0.6, 0.6, 1);
 	rearLight->position = Vector3(0, 0.3, -2.2);
 	scene->addLight(rearLight);
 	boat->addChild(rearLight);
@@ -244,14 +260,14 @@ void createObjects() {
 	hazardLights = new GameObject();
 	hazardLights->position = Vector3(0, 1, 0);
 
-	Light* hazardLight1 = new Light();
+	hazardLight1 = new Light();
 	hazardLight1->type = LIGHT_SPOT;
 	hazardLight1->color = Vector4(0.8, 0.5, 0.1, 1);
 	hazardLight1->spotAngle = 75;
 	scene->addLight(hazardLight1);
 	hazardLights->addChild(hazardLight1);
 
-	Light* hazardLight2 = new Light();
+	hazardLight2 = new Light();
 	hazardLight2->type = LIGHT_SPOT;
 	hazardLight2->color = Vector4(0.8, 0.5, 0.1, 1);
 	hazardLight2->spotAngle = 75;
@@ -389,6 +405,13 @@ void timer(GLint v) {
     searchlight->rotation.y = clamp(searchlight->rotation.y, -55, 55);
 
 	hazardLights->rotation.y += hazardLightsSpeed;
+
+	searchlightLight->type = (searchlightOn ? LIGHT_SPOT : LIGHT_DISABLED);
+	portLight->type = (navLightsOn ? LIGHT_POINT : LIGHT_DISABLED);
+	starboardLight->type = (navLightsOn ? LIGHT_POINT : LIGHT_DISABLED);
+	rearLight->type = (navLightsOn ? LIGHT_POINT : LIGHT_DISABLED);
+	hazardLight1->type = (hazardLightsOn ? LIGHT_SPOT : LIGHT_DISABLED);
+	hazardLight2->type = (hazardLightsOn ? LIGHT_SPOT : LIGHT_DISABLED);
     
     if (keyZoomIn) {
         freeCam->setFOV(freeCam->getFOV() - 1);
