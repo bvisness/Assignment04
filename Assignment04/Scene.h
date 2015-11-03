@@ -28,6 +28,8 @@ protected:
 public:
     GLMiddleman* middleman = nullptr;
 
+	Vector4 ambientLightColor = Vector4(0.1, 0.1, 0.1, 1);
+
     Scene();
     Scene(GLMiddleman* newMiddleman);
     

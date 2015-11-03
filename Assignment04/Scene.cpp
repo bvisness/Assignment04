@@ -48,7 +48,7 @@ void Scene::draw() {
 
 	middleman->bufferLights();
     
-    glUniform4fv(middleman->uAmbientLight, 1, vec4(0.2, 0.2, 0.2, 1));
+    glUniform4fv(middleman->uAmbientLight, 1, ambientLightColor);
     
     std::vector<GameObject*>::iterator objsIt = gameObjects.begin();
 	while (objsIt != gameObjects.end()) {
