@@ -23,7 +23,6 @@ void Scene::addGameObject(GameObject* obj) {
 
 void Scene::addLight(Light* light) {
 	lights.push_back(light);
-	addGameObject(light);
 }
 
 void Scene::init() {
