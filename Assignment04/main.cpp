@@ -44,6 +44,7 @@ Fan* fan;
 Rudder* rudders[numRudders];
 Searchlight* searchlight;
 Water* water;
+GameObject* hazardLights;
 
 Camera* freeCam;
 Camera* chaseCam;
@@ -56,6 +57,7 @@ const GLfloat boatRotateSpeed = 2;
 const GLfloat fanSpeed = 10;
 const GLfloat rudderAngle = 35;
 const GLfloat searchlightSpeed = 1;
+const GLfloat hazardLightsSpeed = 2.5;
 const GLfloat cameraDollySpeed = 0.2;
 const GLfloat cameraDollyMinDistance = 5;
 const GLfloat cameraDollyMaxDistance = 20;
@@ -213,10 +215,51 @@ void createObjects() {
 	searchlightLight->type = LIGHT_SPOT;
 	searchlightLight->spotAngle = 20;
 	searchlightLight->position = Vector3(0, 1, 0);
-	searchlightLight->rotation.x = 20;
+	searchlightLight->rotation.x = 15;
 	searchlightLight->color = Vector4(1, 1, 0.4, 1);
 	scene->addLight(searchlightLight);
 	searchlight->addChild(searchlightLight);
+
+	Light* starboard = new Light();
+	starboard->type = LIGHT_POINT;
+	starboard->color = Vector4(0.1, 0.5, 0.1, 1);
+	starboard->position = Vector3(-1.1, 0.2, 0);
+	scene->addLight(starboard);
+	boat->addChild(starboard);
+
+	Light* port = new Light();
+	port->type = LIGHT_POINT;
+	port->color = Vector4(0.5, 0.1, 0.1, 1);
+	port->position = Vector3(1.1, 0.2, 0);
+	scene->addLight(port);
+	boat->addChild(port);
+
+	Light* rearLight = new Light();
+	rearLight->type = LIGHT_POINT;
+	rearLight->color = Vector4(1, 1, 1, 1);
+	rearLight->position = Vector3(0, 0.3, -2.2);
+	scene->addLight(rearLight);
+	boat->addChild(rearLight);
+
+	hazardLights = new GameObject();
+	hazardLights->position = Vector3(0, 1, 0);
+
+	Light* hazardLight1 = new Light();
+	hazardLight1->type = LIGHT_SPOT;
+	hazardLight1->color = Vector4(0.8, 0.5, 0.1, 1);
+	hazardLight1->spotAngle = 75;
+	scene->addLight(hazardLight1);
+	hazardLights->addChild(hazardLight1);
+
+	Light* hazardLight2 = new Light();
+	hazardLight2->type = LIGHT_SPOT;
+	hazardLight2->color = Vector4(0.8, 0.5, 0.1, 1);
+	hazardLight2->spotAngle = 75;
+	hazardLight2->rotation.y = 180;
+	scene->addLight(hazardLight2);
+	hazardLights->addChild(hazardLight2);
+
+	boat->addChild(hazardLights);
     
     water = new Water();
     water->scale = 10;
@@ -225,6 +268,7 @@ void createObjects() {
 	moon->type = LIGHT_DIRECTIONAL;
 	moon->color = Vector4(0.1, 0.1, 0.2, 1);
 	scene->addLight(moon);
+	scene->addGameObject(moon);
     
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -343,6 +387,8 @@ void timer(GLint v) {
     }
     
     searchlight->rotation.y = clamp(searchlight->rotation.y, -55, 55);
+
+	hazardLights->rotation.y += hazardLightsSpeed;
     
     if (keyZoomIn) {
         freeCam->setFOV(freeCam->getFOV() - 1);

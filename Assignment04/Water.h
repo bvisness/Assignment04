@@ -20,7 +20,7 @@ protected:
 public:
 	Water() : RenderedGameObject() {
         material.specularAmount = 0.8;
-        material.specularExponent = 1000;
+        material.specularExponent = 100;
     }
 };
 
